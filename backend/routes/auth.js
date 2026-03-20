@@ -42,7 +42,7 @@ router.post('/verify-otp', async (req, res) => {
     }
 
     const token = jwt.sign({ workerId: worker._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-    res.json({ token, worker, isNew: !worker.name || worker.name === 'Worker' });
+    res.json({ message: 'OTP sent', otp: otp });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

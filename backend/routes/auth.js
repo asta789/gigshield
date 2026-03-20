@@ -17,7 +17,7 @@ router.post('/request-otp', async (req, res) => {
     otpStore[phone] = { otp, expiresAt: Date.now() + 5 * 60 * 1000 };
     // TODO: Send SMS via MSG91 in production
     console.log(`OTP for ${phone}: ${otp}`); // Remove in production
-    res.json({ message: 'OTP sent', ...(process.env.NODE_ENV !== 'production' && { otp }) });
+    res.json({ message: 'OTP sent', otp });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -42,7 +42,7 @@ router.post('/verify-otp', async (req, res) => {
     }
 
     const token = jwt.sign({ workerId: worker._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-    res.json({ message: 'OTP sent', otp: otp });
+    res.json({ message: 'Login successful', token, worker, isNew: !worker });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -290,4 +290,9 @@ Phase 1 ✅ Complete (March 4–20)
 
 [ ] Creating a 2-minute strategy video (in progress)
 
+
+## 🔗 Live Demo
+- Frontend: [GigShield App](https://bright-sopapillas-8b087c.netlify.app)
+- Backend: [API Server](https://gigshield1.onrender.com)
+- 
 GigShield — Because every delivery partner deserves a safety net.
